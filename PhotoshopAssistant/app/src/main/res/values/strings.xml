@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PhotoshopAssistant</string>
+    <string name="action_logout">Log Out</string>
+</resources>
