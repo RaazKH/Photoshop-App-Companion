@@ -27,4 +27,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.adobe.creativesdk.foundation:auth:0.9.2006-5'
+    implementation 'com.adobe.creativesdk.foundation:assetux:0.9.2006-5'
+
 }

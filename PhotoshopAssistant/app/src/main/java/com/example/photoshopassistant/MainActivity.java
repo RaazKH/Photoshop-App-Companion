@@ -1,24 +1,44 @@
 package com.example.photoshopassistant;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.adobe.creativesdk.foundation.auth.AdobeAuthException;
 import com.adobe.creativesdk.foundation.auth.AdobeAuthSessionHelper;
 import com.adobe.creativesdk.foundation.auth.AdobeAuthSessionLauncher;
 import com.adobe.creativesdk.foundation.auth.AdobeUXAuthManager;
+import com.adobe.creativesdk.foundation.sendtodesktop.AdobeCreativeCloudApplication;
+import com.adobe.creativesdk.foundation.sendtodesktop.AdobeSendToDesktopApplication;
+import com.adobe.creativesdk.foundation.sendtodesktop.AdobeSendToDesktopException;
+import com.adobe.creativesdk.foundation.sendtodesktop.IAdobeSendToDesktopCallBack;
+
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    static final int REQ_CODE_CSDK_USER_AUTH = 1001;
+    static final int REQ_CODE_GALLERY_PICKER = 20;
 
     private AdobeUXAuthManager mUXAuthManager = AdobeUXAuthManager.getSharedAuthManager();
     private AdobeAuthSessionHelper mAuthSessionHelper;
 
+    private Button mOpenGalleryButton;
+    private Button mSendToPhotoshopButton;
+    private ImageView mSelectedImageView;
+    private ProgressBar mSendToDesktopProgressBar;
+    private Uri mSelectedImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +48,50 @@ public class MainActivity extends AppCompatActivity {
 
         mAuthSessionHelper = new AdobeAuthSessionHelper(mStatusCallback);
         mAuthSessionHelper.onCreate(savedInstanceState);
+
+        mOpenGalleryButton = (Button) findViewById(R.id.openGalleryButton);
+        mSendToPhotoshopButton = (Button) findViewById(R.id.sendToPhotoshopButton);
+        mSelectedImageView = (ImageView) findViewById(R.id.selectedImageView);
+        mSendToDesktopProgressBar = (ProgressBar) findViewById(R.id.sendToDesktopProgressBar);
+        mSelectedImageUri = Uri.parse("https://10.0.2.2:123/forum/questions/%22");
+
+        View.OnClickListener openGalleryButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryPickerIntent = new Intent();
+                galleryPickerIntent.setType("image/*");
+                galleryPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(galleryPickerIntent, "Select an Image"), REQ_CODE_GALLERY_PICKER); // Can be any int
+            }
+        };
+
+        mOpenGalleryButton.setOnClickListener(openGalleryButtonListener);
+
+        View.OnClickListener sendToPhotoshopButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mSendToDesktopProgressBar.setVisibility(View.VISIBLE);
+
+                if (mSelectedImageUri != null) {
+                    try {
+                        sendToDesktop();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
+                        mSendToDesktopProgressBar.setVisibility(View.INVISIBLE);
+                        Toast.makeText(MainActivity.this, "Unable to send. Check your connection", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    mSendToDesktopProgressBar.setVisibility(View.INVISIBLE);
+                    Toast.makeText(MainActivity.this, "Select an image from the Gallery", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+        mSendToPhotoshopButton.setOnClickListener(sendToPhotoshopButtonListener);
+
     }
 
     private AdobeAuthSessionHelper.IAdobeAuthStatusCallback mStatusCallback;
@@ -50,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         AdobeAuthSessionLauncher authSessionLauncher = new AdobeAuthSessionLauncher.Builder()
                 .withActivity(this)
-                .withRequestCode(1001) //Can be any int
+                .withRequestCode(REQ_CODE_CSDK_USER_AUTH) //Can be any int ******************
                 .build();
         mUXAuthManager.login(authSessionLauncher);
     }
@@ -94,8 +158,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case 1001:
+                case REQ_CODE_CSDK_USER_AUTH:
                     Log.i(TAG, "User successfully logged in!");
+                    break;
+                case REQ_CODE_GALLERY_PICKER:
+                    mSelectedImageUri = data.getData();
+                    mSelectedImageView.setImageURI(mSelectedImageUri);
+                    break;
             }
         }
     }
@@ -122,4 +191,25 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void sendToDesktop() throws IOException{
+        AdobeCreativeCloudApplication creativeCloudApplication = AdobeCreativeCloudApplication.AdobePhotoshopCreativeCloud;
+        final IAdobeSendToDesktopCallBack sendToDesktopCallBack = new IAdobeSendToDesktopCallBack() {
+            @Override
+            public void onSuccess() {
+                mSendToDesktopProgressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(MainActivity.this, "Opening in Photoshop on your desktop!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(AdobeSendToDesktopException e) {
+                e.printStackTrace();
+                mSendToDesktopProgressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(MainActivity.this, "Failed! Check your internet connection.", Toast.LENGTH_LONG).show();
+            }
+        };
+        AdobeSendToDesktopApplication.sendToDesktop(mSelectedImageUri, "image/jpeg", creativeCloudApplication, sendToDesktopCallBack);
+    }
+
+
 }

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">PhotoshopAssistant</string>
     <string name="action_logout">Log Out</string>
+    <string name="send_to_desktop_button">Select Photo</string>
+    <string name="sendToPhotoshop">Send to Photoshop</string>
 </resources>

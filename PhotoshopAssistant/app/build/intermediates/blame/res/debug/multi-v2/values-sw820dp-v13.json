@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\aerop\\Videos\\Photoshop Assistant\\Photoshop-App-Companion\\PhotoshopAssistant\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw820dp-v13\\values-sw820dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\assetux-0.9.2006-5.aar\\e56fe03538a2ccdf8c3f1bedb86bd94e\\res\\values-sw820dp-v13\\values-sw820dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,124,207",
+                        "endColumns": "68,82,86",
+                        "endOffsets": "119,202,289"
+                    }
+                }
+            ]
+        }
+    ]
+}

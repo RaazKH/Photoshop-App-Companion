@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.photoshopassistant"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.example.photoshopassistant.MainApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.example.photoshopassistant.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXAssetOneUpViewerActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" />
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXPhotoAssetOneUpViewerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" />
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUxAssetBrowserV2Activity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeCSDKThemeActivity" />
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXAssetVideoActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXLibraryItemCollectionOneUpViewerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXMobilePackageItemOneUpViewerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXCompositionOneUpViewerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeAssetViewerLightTheme" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.edit.AdobeAssetEditActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="false"
+            android:theme="@style/AdobeEditThemeActivity" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.libraryedit.AdobeDesignLibraryMoveActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeEditThemeActivity" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.settings.CloudPickerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/AdobeCSDKThemeActivity.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeShowUploadTasksActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:theme="@style/AdobeAssetViewerLightTheme" >
+        </activity>
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.auth.AdobeAuthSignInActivity"
+            android:exported="false"
+            android:label="@string/adobe_csdk_creative_cloud"
+            android:multiprocess="true"
+            android:theme="@style/AdobeCSDKThemeActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustPan|adjustResize" />
+        <activity
+            android:name="com.adobe.creativesdk.foundation.internal.auth.AdobeAuthContinuableEventActivity"
+            android:exported="false"
+            android:label="@string/adobe_csdk_creative_cloud"
+            android:launchMode="singleInstance"
+            android:multiprocess="true"
+            android:theme="@style/AdobeCSDKThemeActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustPan|adjustResize" />
+        <!--
+        Include this in you app Manifest if you need SSO ( Single sign on) for Adobe Internal clients.
+        <service android:name="com.adobe.creativesdk.foundation.internal.auth.authenticator.AdobeCSDKAdobeIDAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/adobe_csdk_adobeid_authenticator_description" />
+        </service>
+        -->
+        <activity android:name="com.adobe.creativesdk.foundation.internal.base.AdobeTOUHandlerActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.0.1" />
+    </application>
+
+</manifest>

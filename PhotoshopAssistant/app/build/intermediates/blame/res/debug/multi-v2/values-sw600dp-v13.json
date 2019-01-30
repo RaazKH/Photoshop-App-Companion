@@ -1,0 +1,72 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\aerop\\Videos\\Photoshop Assistant\\Photoshop-App-Companion\\PhotoshopAssistant\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\55b3995c85aa9c78fc062104ce8ee79f\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,193,263,337,413,472,543",
+                        "endColumns": "68,68,69,73,75,58,70,67",
+                        "endOffsets": "119,188,258,332,408,467,538,606"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\e9edd87ddb846613795b579e9134e495\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,115,185,256,328,386,444,550,614,677",
+                        "endLines": "2,3,4,5,6,7,8,9,10,14",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "110,180,251,323,381,439,545,609,672,854"
+                    },
+                    "to": {
+                        "startLines": "17,18,19,20,21,22,23,24,30,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1098,1158,1228,1299,1371,1429,1487,1593,1995,2058",
+                        "endLines": "17,18,19,20,21,22,23,24,30,34",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "1153,1223,1294,1366,1424,1482,1588,1652,2053,2235"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\assetux-0.9.2006-5.aar\\e56fe03538a2ccdf8c3f1bedb86bd94e\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,205,270,330,391,443,526",
+                        "endColumns": "68,80,64,59,60,51,82,86",
+                        "endOffsets": "119,200,265,325,386,438,521,608"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,15,16,25,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "611,680,761,977,1037,1657,1825,1908",
+                        "endColumns": "68,80,64,59,60,51,82,86",
+                        "endOffsets": "675,756,821,1032,1093,1704,1903,1990"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\auth-0.9.2006-5.aar\\5e60783e9ee8605739024727e31a20f8\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,126,206,267",
+                        "endColumns": "70,79,60,54",
+                        "endOffsets": "121,201,262,317"
+                    },
+                    "to": {
+                        "startLines": "13,14,26,27",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "826,897,1709,1770",
+                        "endColumns": "70,79,60,54",
+                        "endOffsets": "892,972,1765,1820"
+                    }
+                }
+            ]
+        }
+    ]
+}

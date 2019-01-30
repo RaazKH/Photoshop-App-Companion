@@ -1,0 +1,4 @@
+#Tue Jan 29 21:03:36 EST 2019
+base.0=C\:\\Users\\aerop\\Videos\\Photoshop Assistant\\Photoshop-App-Companion\\PhotoshopAssistant\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
+path.0=classes.dex
+renamed.0=classes.dex

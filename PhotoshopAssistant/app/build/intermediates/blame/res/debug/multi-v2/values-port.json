@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\aerop\\Videos\\Photoshop Assistant\\Photoshop-App-Companion\\PhotoshopAssistant\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\aerop\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\55b3995c85aa9c78fc062104ce8ee79f\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}
